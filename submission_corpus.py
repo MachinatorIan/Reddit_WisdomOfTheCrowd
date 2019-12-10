@@ -109,7 +109,10 @@ class SubmissionCorpus:
         # Build a simple summary of judgements from the proportion of all comments that vote for each 
         # judgement category.
         total_judgements = sum([sum(count) for count in self.judgements.values()])
-        judgement_summary = [(category, sum(count)/total_judgements) for category, count in self.judgements.items()]
+        try:
+            judgement_summary = [(category, sum(count)/total_judgements) for category, count in self.judgements.items()]
+        except:
+            judgement_summary = [(0,0)]
         return(judgement_summary)
     
     def tokenize_sentence(self, sent):
