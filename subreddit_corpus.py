@@ -27,7 +27,7 @@ class SubredditCorpus:
         for category in self.judgement_categories:
             f = open(category+'.txt', 'w+')
             for i, submission in enumerate(sorted_submissions[category]):
-                f.write(str(submission[0])+'\t'+str(submission[1]))
+                f.write(str(submission[0])+'\t'+str(submission[1]).replace('\n',' '))
                 if i < len(sorted_submissions[category])-2:
                     f.write('\n')
             f.close()
